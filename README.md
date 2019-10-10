@@ -38,3 +38,32 @@ print file()
 print
 print string(sys.argv[0])
 ```
+
+#### Output
+```
+berto@clevo:~/Desktop/Python$ ./test.py first second third
+2 power 3 = 8.0
+
+Params:
+0 ./test.py
+1 first
+2 second
+3 third
+
+File first line: #!/usr/bin/python
+File chars: 699
+
+string: ./test.py
+[0]: .
+[1]: /
+
+[2]: t
+[3]: e
+[4]: s
+[5]: t
+[6]: .
+[7]: p
+[8]: y
+string[2:5]: test
+string[-2:len(string)]: py
+```
