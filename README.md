@@ -1,5 +1,5 @@
 # Python
-## Simple example source file for Python
+## Functions
 #### Import & Init
 ```
 import sys
@@ -9,7 +9,7 @@ n = 1
 FILENAME = sys.argv[0]
 FIRST_LINE = open(FILENAME,"r").readline().rstrip()
 ```
-#### Functions
+#### Functions definition
 ```
 def show(title,string):
     NPAD=50
@@ -95,4 +95,33 @@ String: #!/usr/bin/python
 string[2:5]: /usr
 string[-2:len(string)]: on
 **************************************************
+```
+
+## Classes
+#### Classes definition
+```
+class Record:
+    name = ""
+    def __init__(self,name):
+        self.name = name
+
+class Article(Record):
+    price = 0
+    def __init__(self,name,price):
+        super().__init__(name)
+        self.price = price
+````      
+#### Main
+````      
+user = Record("John")
+article = Article("laptop",1000)
+
+print(f"user: {user.name} ")
+print(f"article: {article.name} {article.price}")
+````      
+
+#### Output
+```
+user: John
+article: laptop 1000
 ```
