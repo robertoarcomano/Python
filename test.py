@@ -1,31 +1,50 @@
 #!/usr/bin/python
-import sys;
-import math;
+import sys
+import math
+import os
+n = 1
+FILENAME = sys.argv[0]
+FIRST_LINE = open(FILENAME,"r").readline().rstrip()
 
-def power(base,exp):
-    return math.pow(base,exp);
+def show(title,string):
+    NPAD=50
+    global n
+    s = "# " + str(n) + ". " + title + "\n"
+    s += "*".ljust(NPAD,"*") + "\n"
+    s += string
+    s += "*".ljust(NPAD,"*") + "\n"
+    print(s)
+    n += 1
 
-def params():
-    s = "Params: \n"
+def arguments():
+    cmdLine = ""
+    arguments = ""
     for i,p in enumerate(sys.argv):
-        s += str(i) + " " + str(p) + "\n"
-    return s
+        cmdLine += str(p) + " "
+        arguments += "Argument[" + str(i) + "]: " + str(p) + "\n"
+    return "Command line: " + cmdLine + "\n" + arguments
 
 def file():
-    f = open("test.py","r")
-    return "File first line: " + f.readline() + "File chars: " + str(len(f.read()))
+    s = "Filename: " + FILENAME + "\n"
+    fileLen = str(os.path.getsize(FILENAME))
+    s += "File first line: " + FIRST_LINE + "\n"
+    s += "File chars: " + fileLen + "\n"
+    return s
 
-def string(string):
-    s = "string: " + string + "\n"
+def string():
+    string = FIRST_LINE
+    s = "String: " + string + "\n"
     for i,c in enumerate(string):
         s += "[" + str(i) + "]: " + c + "\n"
     s += "string[2:5]: " + string[2:6] + "\n"
     s += "string[-2:len(string)]: " + string[-2:len(string)] + "\n"
     return s
 
-print("2 power 3 = " + str(power(2,3)))
-print
-print params()
-print file()
-print
-print string(sys.argv[0])
+topics = [
+    { "title": "ARGUMENTS", "function": arguments },
+    { "title": "FILE", "function": file },
+    { "title": "STRING", "function": string },
+]
+
+for topic in topics:
+    show(topic["title"],topic["function"]())
