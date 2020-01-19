@@ -125,3 +125,52 @@ print(f"article: {article.name} {article.price}")
 user: John
 article: laptop 1000
 ```
+
+## FP
+#### Functions definition
+```
+def sum(a,b):
+    return a + b
+
+def multiply(a,b):
+    return a * b
+
+def odd(a):
+    return False if (a % 2 == 0) else True
+
+def even(a):
+    return not odd(a)
+````      
+#### Main
+````      
+a = [1,2,3,4,5]
+SUM = reduce(sum,a)
+SUM_EVEN = reduce(sum,filter(even,a))
+SUM_ODD = reduce(sum,filter(odd,a))
+MULTIPLY = reduce(multiply,a)
+MULTIPLY_EVEN = reduce(multiply,filter(even,a))
+MULTIPLY_ODD = reduce(multiply,filter(odd,a))
+
+print(f"ARRAY: {a}")
+print(f"ARRAY EVEN: {list(filter(even,a))})")
+print(f"ARRAY ODD: {list(filter(odd,a))}")
+print(f"SUM: {SUM}")
+print(f"SUM_EVEN: {SUM_EVEN}")
+print(f"SUM_ODD: {SUM_ODD}")
+print(f"MULTIPLY: {MULTIPLY}")
+print(f"MULTIPLY_EVEN: {MULTIPLY_EVEN}")
+print(f"MULTIPLY_ODD: {MULTIPLY_ODD}")
+````      
+
+#### Output
+```
+ARRAY: [1, 2, 3, 4, 5]
+ARRAY EVEN: [2, 4]
+ARRAY ODD: [1, 3, 5]
+SUM: 15
+SUM_EVEN: 6
+SUM_ODD: 9
+MULTIPLY: 120
+MULTIPLY_EVEN: 8
+MULTIPLY_ODD: 15
+```
