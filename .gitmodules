@@ -1,0 +1,3 @@
+[submodule "PythonParamiko"]
+	path = PythonParamiko
+	url = https://github.com/robertoarcomano/PythonParamiko.git
