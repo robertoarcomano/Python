@@ -9,6 +9,7 @@ os.system("rm -f " + FILE)
 
 cmd = """echo \
 '\
+label1: "new"
 list: 
   - item1 
   - item2
@@ -32,3 +33,4 @@ for i, item in enumerate(list_items):
 print("record:")
 for item in record:
     print(item + ": " + record[item])
+print("label: " + data["label"] if "label" in data else "no")
