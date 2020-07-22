@@ -1,6 +1,5 @@
 #!/usr/bin/python
 import threading
-import time
 
 global_var = 0
 num_thread = 8
