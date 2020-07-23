@@ -174,3 +174,79 @@ MULTIPLY: 120
 MULTIPLY_EVEN: 8
 MULTIPLY_ODD: 15
 ```
+
+## Threads
+#### Main
+```
+#!/usr/bin/python
+import threading
+
+global_var = 0
+num_thread = 8
+
+ret_list = list()
+
+
+def start(n, ret):
+    global global_var
+    print(n, global_var)
+    print(n, "++")
+    global_var += n
+    print(n, global_var)
+    ret.append({"self": 1, "n": n})
+
+
+threads = list()
+for i in range(0, num_thread):
+    threads.append(threading.Thread(target=start, args=(i, ret_list)))
+
+for i in range(0, num_thread):
+    threads[i].start()
+
+for i in range(0, num_thread):
+    threads[i].join()
+
+for i in range(0, num_thread):
+    print(threads[i])
+
+print(ret_list)
+```
+
+#### Output
+```
+berto@clevo:~/PycharmProjects/Python$ ./threads.py 
+0 0
+0 ++
+0 0
+1 0
+1 ++
+1 1
+2 0
+4 1
+4 ++
+3 0
+2 ++
+4 5
+2 7
+5 5
+3 ++
+6 7
+7 7
+5 ++
+3 10
+6 ++
+7 ++
+6 21
+7 28
+5 15
+<Thread(Thread-1, stopped 139743365949184)>
+<Thread(Thread-2, stopped 139743357556480)>
+<Thread(Thread-3, stopped 139743349163776)>
+<Thread(Thread-4, stopped 139743365949184)>
+<Thread(Thread-5, stopped 139743136315136)>
+<Thread(Thread-6, stopped 139743357556480)>
+<Thread(Thread-7, stopped 139743127922432)>
+<Thread(Thread-8, stopped 139743136315136)>
+[{'self': 1, 'n': 0}, {'self': 1, 'n': 1}, {'self': 1, 'n': 4}, {'self': 1, 'n': 2}, {'self': 1, 'n': 3}, {'self': 1, 'n': 6}, {'self': 1, 'n': 7}, {'self': 1, 'n': 5}]
+
+```
