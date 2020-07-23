@@ -27,4 +27,4 @@ for i in range(0, num_thread):
     threads[i].join()
 
 for i in range(0, num_thread):
-    print(threads[i].internal)
+    print(threads[i].getName() + " " + str(threads[i].internal))
